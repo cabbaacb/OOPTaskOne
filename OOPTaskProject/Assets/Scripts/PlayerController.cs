@@ -1,13 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using OOPTaskOne;
 
-public class PlayerController : MonoBehaviour
-{
-    [SerializeField] private float _speed = 5;
+public class PlayerController : Unit
+{    
     [SerializeField] private float _rotationSpeed = 50;
     [SerializeField] private float _mouseSensitivityHorizontal = 2;
-    [SerializeField] private GameObject _firePoint;
+
+
+    [SerializeField] private GameManager gameManager;
 
     private CharacterController _controller;
 
@@ -19,12 +21,13 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         _controller = GetComponent<CharacterController>();
+
     }
 
     public void Movement(Vector3 move)
     {
         move = transform.TransformDirection(move); //this is needed to make character move considering his rotation
-        _controller.Move(move * Time.deltaTime * _speed);
+        _controller.Move(move * Time.deltaTime * movementSpeed);
     }
 
     public void Rotation(float direction)
@@ -37,11 +40,7 @@ public class PlayerController : MonoBehaviour
     public void Fire()
     {
         print("Fire");
-        //GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        //sphere.layer = 8;   //I decided to put bulllets in separate layer, and disable collisions between them.
-        //sphere.transform.position = _firePoint.transform.position;
-        //Rigidbody sphereRB = sphere.AddComponent<Rigidbody>();
-        //sphereRB.useGravity = false;
-        //sphereRB.AddForce(transform.forward * 1000f);
+        gameManager.Shooting(FirePoint, Missile);
+        
     }
 }

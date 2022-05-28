@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2588277004807228806}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,8 @@ GameObject:
   - component: {fileID: 7666253883705790308}
   - component: {fileID: 3019960989889208622}
   - component: {fileID: -8727233987484111833}
-  m_Layer: 0
+  - component: {fileID: 3252217793799983324}
+  m_Layer: 9
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138,6 +139,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00696bf373487744e940cfb73b21aa83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3252217793799983324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5332685158187436103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46400f5d7e06f524ba5d2bf59198e672, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  Controller: {fileID: 0}
+  Missile: 0
+  attackSpeed: 0
+  attackRadius: 0
+  movementSpeed: 0
+  FirePoint: {fileID: 0}
+  Type: 0
 --- !u!1 &6865206056840817962
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,7 +171,7 @@ GameObject:
   - component: {fileID: 974354551273096426}
   - component: {fileID: 659738738632964902}
   - component: {fileID: 666140771119469081}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
