@@ -1,32 +1,69 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using OOPTaskOne;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private CharacterController playerController;
+    [SerializeField] private GameObject _player;
 
-    private List<CharacterController> _enemyControllers;
-    private List<GameObject> _missiles = new List<GameObject>();
+    private List<EnemyData> _enemies = new List<EnemyData>();
+    private List<ProjectileData> _missilesData = new List<ProjectileData>();
 
     [SerializeField] private GameObject _stone, _bullet, _rocket;
+    [SerializeField] private List<GameObject> _enemyPrefabs = new List<GameObject>();
 
-    private void Awake()
+    private void Start()
     {
-        
+        for (int i = 0; i < 10; i++)
+        {
+            GameObject enemy = Instantiate(_enemyPrefabs[Random.Range(0, _enemyPrefabs.Count)]);
+            enemy.transform.position = new Vector3(Random.Range(-50, 50), 1, Random.Range(-50, 50));
+            enemy.transform.rotation = Random.rotation;
+            enemy.transform.eulerAngles = new Vector3(0, enemy.transform.eulerAngles.y, 0);
+            EnemyData enemyData = enemy.GetComponent<EnemyData>();
+            _enemies.Add(enemyData);
+        }
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void Update()
     {
+        foreach (ProjectileData missile in _missilesData)
+        {
+            missile.remainingTime -= Time.deltaTime;
+            if (missile.remainingTime <= 0)
+            {
+                Destroy(missile.gameObject);
+            }
+        }
+        _missilesData.RemoveAll(missile => missile.remainingTime <= 0);
 
+        foreach (EnemyData enemy in _enemies)
+        {
+            if (enemy.health <= 0)
+            {
+                Destroy(enemy.gameObject);
+            }
+            else if (Vector3.Distance(_player.transform.position, enemy.gameObject.transform.position) <= enemy.attackRadius)
+            {
+                Aim(enemy.gameObject, _player);
+               
+                if (enemy.timer <= 0)
+                {
+                    enemy.timer = enemy.attackSpeed;
+                    Shooting(enemy.FirePoint, enemy.Missile);
+                }
+                else
+                {
+                    enemy.timer -= Time.deltaTime * 10;
+                }
+            }
+        }
+        _enemies.RemoveAll(enemy => enemy.health <= 0);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Aim(GameObject shooter, GameObject target)
     {
-
+        shooter.transform.LookAt(target.transform);
     }
 
 
@@ -50,12 +87,12 @@ public class GameManager : MonoBehaviour
                 break;
         }
 
-        print(_missile);
         _missile.layer = firePoint.layer;  
         Rigidbody _missileRB = _missile.AddComponent<Rigidbody>();
         _missileRB.useGravity = false;
-        _missileRB.AddRelativeForce(transform.up * _missile.GetComponent<ProjectileData>().movementSpeed * 10f, ForceMode.Acceleration);
+        ProjectileData _missileData = _missile.GetComponent<ProjectileData>();
+        _missileRB.AddRelativeForce(transform.up * _missileData.movementSpeed * 10f, ForceMode.Acceleration);
 
-        _missiles.Add(_missile);
+        _missilesData.Add(_missileData);
     }
 }

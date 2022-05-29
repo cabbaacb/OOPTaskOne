@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 6575724330708645511}
   - component: {fileID: 6878963473305339959}
   - component: {fileID: 9152639652129261612}
+  - component: {fileID: -3258054665406893237}
   m_Layer: 0
   m_Name: Rocket
-  m_TagString: Untagged
+  m_TagString: Missile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -94,3 +95,20 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &-3258054665406893237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2112103487920127410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84fb84688b75f99439456769b1988e74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  missileGameObject: {fileID: 0}
+  Missile: 1
+  damage: 100
+  movementSpeed: 10
+  remainingTime: 15

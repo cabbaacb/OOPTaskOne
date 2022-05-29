@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using OOPTaskOne;
 
 public class PlayerController : Unit
 {    
@@ -39,8 +38,6 @@ public class PlayerController : Unit
 
     public void Fire()
     {
-        print("Fire");
-        gameManager.Shooting(FirePoint, Missile);
-        
+        gameManager.Shooting(FirePoint, Missile);        
     }
 }

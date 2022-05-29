@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3767126273882775336}
   m_Layer: 0
   m_Name: Stone
-  m_TagString: Untagged
+  m_TagString: Missile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -106,6 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84fb84688b75f99439456769b1988e74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  missileGameObject: {fileID: 0}
   Missile: 0
   damage: 75
   movementSpeed: 20
