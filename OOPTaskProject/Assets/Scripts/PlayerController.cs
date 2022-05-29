@@ -43,4 +43,6 @@ public class PlayerController : Unit
         gameManager.Shooting(FirePoint, Missile);
         
     }
+
+    public void Damage(int damage) => health -= damage;
 }

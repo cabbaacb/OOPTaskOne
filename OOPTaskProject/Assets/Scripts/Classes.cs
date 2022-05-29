@@ -10,8 +10,8 @@ namespace OOPTaskOne
 
     public class Unit : MonoBehaviour
     {
-
-        public int health;
+        public int maxHealth = 100;
+        public int health = 100;
         
         public CharacterController Controller;
         public Missile Missile;

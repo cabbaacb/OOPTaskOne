@@ -6,8 +6,9 @@ using OOPTaskOne;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private CharacterController playerController;
+    [SerializeField] private HealthBarScript healthBar;
 
-    private List<CharacterController> _enemyControllers;
+    private List<CharacterController> _enemyControllers = new List<CharacterController>();
     private List<GameObject> _missiles = new List<GameObject>();
 
     [SerializeField] private GameObject _stone, _bullet, _rocket;
@@ -26,6 +27,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        healthBar.UpdateHealthBar();
 
     }
 
@@ -58,4 +60,6 @@ public class GameManager : MonoBehaviour
 
         _missiles.Add(_missile);
     }
+
+    
 }
