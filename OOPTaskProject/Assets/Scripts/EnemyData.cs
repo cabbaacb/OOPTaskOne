@@ -13,7 +13,7 @@ public class EnemyData : Unit
     public void EnemyTargeting()
     {
         var player = GetComponent<PlayerController>();
-        var distance = Vector3.Distance(player.transform.position, this.transform.position);
+        float distance = Vector3.Distance(player.transform.position, this.transform.position);
 
         if (distance <= attackRadius)
             transform.LookAt(player.transform);

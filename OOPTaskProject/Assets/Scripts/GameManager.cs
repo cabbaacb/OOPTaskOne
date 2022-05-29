@@ -12,7 +12,8 @@ public class GameManager : MonoBehaviour
     private List<CharacterController> _enemyControllers = new List<CharacterController>();
     private List<GameObject> _missiles = new List<GameObject>();
     private int _enemyCount = 0;
-
+    
+    
     private Coroutine _enemySpawn;
 
     [SerializeField] private GameObject _stone, _bullet, _rocket;
@@ -70,9 +71,10 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator EnemySpawn()
     {
-        if (_enemyCount <= 20)
+        if (_enemyCount <= 5)
         {
             GameObject _enemy = Instantiate(enemy);
+            enemy.transform.position = new Vector3(0, 1, 0);
             enemy.GetComponent<EnemyData>().EnemyTargeting();
             _enemyControllers.Add(enemy.GetComponent<CharacterController>());
             _enemyCount++;

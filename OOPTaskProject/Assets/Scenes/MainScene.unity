@@ -196,34 +196,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 14503879}
   m_CullTransparentMesh: 0
---- !u!1 &207908390 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5332685158187436103, guid: 2fadc258676e0eb4ca78e3860ac855c4,
-    type: 3}
-  m_PrefabInstance: {fileID: 8752216420242484260}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &207908391
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 207908390}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46400f5d7e06f524ba5d2bf59198e672, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 0
-  health: 0
-  Controller: {fileID: 0}
-  Missile: 0
-  attackSpeed: 0
-  attackRadius: 0
-  movementSpeed: 0
-  FirePoint: {fileID: 0}
-  gameManager: {fileID: 0}
-  Type: 0
 --- !u!1 &274018530
 GameObject:
   m_ObjectHideFlags: 0
@@ -1308,8 +1280,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30852517a3cb1dc4da837b94f7a8107a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
-  health: 0
+  maxHealth: 100
+  health: 100
   Controller: {fileID: 1355623303}
   Missile: 0
   attackSpeed: 4.47
@@ -1562,7 +1534,7 @@ PrefabInstance:
     - target: {fileID: 6875416813116048361, guid: 2fadc258676e0eb4ca78e3860ac855c4,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.1154502
+      value: 5.3
       objectReference: {fileID: 0}
     - target: {fileID: 6875416813116048361, guid: 2fadc258676e0eb4ca78e3860ac855c4,
         type: 3}
@@ -1572,7 +1544,7 @@ PrefabInstance:
     - target: {fileID: 6875416813116048361, guid: 2fadc258676e0eb4ca78e3860ac855c4,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10.589215
+      value: 13.5
       objectReference: {fileID: 0}
     - target: {fileID: 6875416813116048361, guid: 2fadc258676e0eb4ca78e3860ac855c4,
         type: 3}
