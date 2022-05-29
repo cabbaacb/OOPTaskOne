@@ -7,11 +7,16 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private CharacterController playerController;
     [SerializeField] private HealthBarScript healthBar;
+    [SerializeField] private EnemyHealthBarScript enemyHealthBar;
 
     private List<CharacterController> _enemyControllers = new List<CharacterController>();
     private List<GameObject> _missiles = new List<GameObject>();
+    private int _enemyCount = 0;
+
+    private Coroutine _enemySpawn;
 
     [SerializeField] private GameObject _stone, _bullet, _rocket;
+    [SerializeField] private GameObject enemy;
 
     private void Awake()
     {
@@ -28,7 +33,9 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         healthBar.UpdateHealthBar();
+        enemyHealthBar.UpdateEnemyHealthBar();
 
+        _enemySpawn = StartCoroutine(EnemySpawn());
     }
 
 
@@ -61,5 +68,16 @@ public class GameManager : MonoBehaviour
         _missiles.Add(_missile);
     }
 
-    
+    private IEnumerator EnemySpawn()
+    {
+        if (_enemyCount <= 20)
+        {
+            GameObject _enemy = Instantiate(enemy);
+            enemy.GetComponent<EnemyData>().EnemyTargeting();
+            _enemyControllers.Add(enemy.GetComponent<CharacterController>());
+            _enemyCount++;
+        }
+        yield return new WaitForSeconds(5f);
+        //можно добавить ещё спавн нового врага каждые 30 секунд просто прекола для.
+    }
 }

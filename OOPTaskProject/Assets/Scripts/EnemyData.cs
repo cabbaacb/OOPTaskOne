@@ -10,7 +10,7 @@ public class EnemyData : Unit
     // тип противника, здоровье, тип используемого снаряда, скорость атаки, дальность атаки и скорость перемещения;
     public EnemyType Type;
 
-    private void EnemyTargeting()
+    public void EnemyTargeting()
     {
         var player = GetComponent<PlayerController>();
         var distance = Vector3.Distance(player.transform.position, this.transform.position);
